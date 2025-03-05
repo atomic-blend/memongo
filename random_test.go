@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/tryvium-travels/memongo"
+	"github.com/atomic-blend/memongo"
 )
 
 func TestRandomDatabase(t *testing.T) {

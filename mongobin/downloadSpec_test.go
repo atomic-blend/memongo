@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/require"
-	"github.com/tryvium-travels/memongo/mongobin"
+	"github.com/atomic-blend/memongo/mongobin"
 )
 
 const (

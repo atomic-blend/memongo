@@ -10,9 +10,9 @@ import (
 	"github.com/spf13/afero"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"github.com/tryvium-travels/memongo/memongolog"
-	"github.com/tryvium-travels/memongo/mongobin"
-	"github.com/tryvium-travels/memongo/mongobin/mockAfero"
+	"github.com/atomic-blend/memongo/memongolog"
+	"github.com/atomic-blend/memongo/mongobin"
+	"github.com/atomic-blend/memongo/mongobin/mockAfero"
 )
 
 func TestGetOrDownload(t *testing.T) {
@@ -59,7 +59,7 @@ func TestGetOrDownloadDifferentFilesystems(t *testing.T) {
 	defer ctrl.Finish()
 	m := mockAfero.NewMockFs(ctrl)
 
-	m.EXPECT().Rename(gomock.Any(), gomock.Any()).Return(&os.LinkError{"rename", "oldname", "newname", errors.New("rename error")}).Times(1)
+	m.EXPECT().Rename(gomock.Any(), gomock.Any()).Return(&os.LinkError{Op: "rename", Old: "oldname", New: "newname", Err: errors.New("rename error")}).Times(1)
 
 	// General mock faking :)
 	m.EXPECT().Mkdir(gomock.Any(), gomock.Any()).DoAndReturn(func(dir string, perm fs.FileMode) error { return FS.Mkdir(dir, perm) }).AnyTimes()
